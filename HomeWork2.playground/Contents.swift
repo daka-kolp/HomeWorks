@@ -31,13 +31,13 @@ print("Розділ 1.1 Константи\n")
  */
 
 let petName = "Jack"
-let weight = 25.0
-let age = 5
+let petWeight = 25.0
+let petAge = 5
 let isHungry = false
 
 print("Ім'я хатньої тварини: \(petName)")
-print("Вага хатньої тварини: \(weight) кг")
-print("Вік хатньої тварини: \(age) років")
+print("Вага хатньої тварини: \(petWeight) кг")
+print("Вік хатньої тварини: \(petAge) років")
 print("Хатня тварина голодна: \(isHungry)")
 
 
@@ -85,21 +85,33 @@ print("\nРозділ 1.2 Змінні\n")
 
  */
 
+var userName = "Daria"
+var userLastName = "Kolpakova"
+var userAge = 25
+var userHeight = 1.64
+var userWeight = 50
+var inMarriage = false
+
+ 
 print("Інформація за 2018 р.:")
-print("Ім'я: ")
-print("Прізвище: ")
-print("Вік: ")
-print("зріст: см")
-print("Вага: кг")
-print("У шлюбі: ")
+print("Ім'я: \(userName)")
+print("Прізвище: \(userLastName)")
+print("Вік: \(userAge)")
+print("зріст: \(userHeight) см")
+print("Вага: \(userWeight) кг")
+print("У шлюбі: \(inMarriage)")
+
+userAge += 6
+userWeight += 10
+inMarriage = true
 
 print("\nІнформація за поточний рік:")
-print("Ім'я: ")
-print("Прізвище: ")
-print("Вік: ")
-print("зріст: см")
-print("Вага: кг")
-print("У шлюбі: ")
+print("Ім'я: \(userName)")
+print("Прізвище: \(userLastName)")
+print("Вік: \(userAge)")
+print("зріст: \(userHeight) см")
+print("Вага: \(userWeight) кг")
+print("У шлюбі: \(inMarriage)")
 
 
 print("\nРозділ 1.3 Псевдоніми\n")
