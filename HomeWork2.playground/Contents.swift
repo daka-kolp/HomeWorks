@@ -209,16 +209,24 @@ print("\nРозділ 1.4 Кортежі\n")
  
  */
 
-print("Прізвище: ")
-print("Вік: ")
-print("Зріст: см")
-print("Вага: кг")
-print("У шлюбі: ")
+var profileInfo = (name: userName, lastName: userLastName, age: userAge, height: userHeight, weight: userWeight, inMarriage: inMarriage)
+var weatherInfo = (pressure: pressure, humidity: humidity, celsius: celsius)
+
+profileInfo.weight = 65
+profileInfo.age = 35
+
+print("Прізвище: \(profileInfo.lastName)")
+print("Вік: \(profileInfo.age)")
+print("Зріст: \(profileInfo.height) см")
+print("Вага: \(profileInfo.weight) кг")
+print("У шлюбі: \(profileInfo.inMarriage)")
+
+weatherInfo.celsius = 25
 
 print("\nІнфорація про погоду:")
-print("Тиск: hPa")
-print("Вологість: %")
-print("Температура: C")
+print("Тиск: \(weatherInfo.pressure) hPa")
+print("Вологість: \(weatherInfo.humidity) %")
+print("Температура: \(weatherInfo.celsius) C")
 
 
 print("\nРозділ 1.5 Опціонали\n")
