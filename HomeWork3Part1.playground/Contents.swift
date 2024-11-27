@@ -320,10 +320,18 @@ printProducts1()
  
  */
 
+func printProducts2(maxPrice: Double) {
+    print("-------------------Товари з ціною менше \(maxPrice)-------------------------------")
+    for (index, product) in cart.enumerated() {
+        if (product.1 < maxPrice) {
+            print("--------------------------------------------------")
+            print("\(index + 1) Назва товару: \(product.0), Ціна: \(product.1) \(product.2)")
+            print("------------------------------------------------------")
+        }
+    }
+}
 
-
-
-
+printProducts2(maxPrice: 4500.0)
 
 /*
  
