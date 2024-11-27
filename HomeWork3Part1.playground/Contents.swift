@@ -462,7 +462,24 @@ var motherBoard: MotherBoard = MotherBoard(socet: "s1151", processor: .intel)
  
  */
 
+class Product {
+    var name = "ASRock H310CV-HDV"
+    var price = 1717.0
+    var currency = Currency.uah
+    var motherBoard = MotherBoard(socet: "s1151", processor: .intel)
+    
+    func printInfo() {
+        print("Назва товару: \(name), Ціна: \(price) \(currency), Сокет: \(motherBoard.socet), Процессор: \(motherBoard.processor)")
+    }
+    
+    
+}
 
+print("------------------------------------------------------")
 
+let product = Product()
+product.printInfo()
 
-
+product.currency = .usd
+product.motherBoard = MotherBoard(socet: "sAM4", processor: .amd)
+product.printInfo()
