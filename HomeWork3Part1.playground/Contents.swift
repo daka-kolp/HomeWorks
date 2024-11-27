@@ -355,9 +355,25 @@ printProducts2(maxPrice: 4500.0)
  
  */
 
+func printProducts3(processor: String) {
+    var expensiveProduct: ProductInfo?
+    for (index, product) in cart.enumerated() {
+        if (product.4 == processor) {
+            if (expensiveProduct == nil) || (product.1 > expensiveProduct!.1) {
+                expensiveProduct = product
+            }
+        }
+    }
+    if (expensiveProduct != nil) {
+        let product = expensiveProduct!
+        print("-------------------Найдорожчий товар за процесором \(processor)-------------------------------")
+        print("Назва товару: \(product.0), Ціна: \(product.1) \(product.2)")
+    } else {
+        print("-------------------Нема товару з процесором \(processor) в списку -------------------------------")
+    }
+}
 
-
-
+printProducts3(processor: "Intel")
 
 /*
  
