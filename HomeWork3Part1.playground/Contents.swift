@@ -278,8 +278,18 @@ for (index, product) in cart.enumerated() {
  
  */
 
+func printProducts1() {
+    print("-------------------Intel-------------------------------")
+    for (index, product) in cart.enumerated() {
+        if (product.4 == "Intel") {
+            print("--------------------------------------------------")
+            print("\(index + 1) Назва товару: \(product.0)")
+            print("------------------------------------------------------")
+        }
+    }
+}
 
-
+printProducts1()
 
 /*
  
