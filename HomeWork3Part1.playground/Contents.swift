@@ -132,9 +132,16 @@ while counter1 < cart.count {
     ------------------------------------------------------
  */
 
+var counter2 = 0
 
-
-
+repeat {
+    let product = cart[counter2]
+    print("-------------------\(counter2 + 1)-------------------------------")
+    print("Назва товару: \(product.0)")
+    print("Сокет: \(product.3)")
+    print("------------------------------------------------------")
+    counter2 += 1
+} while counter2 < cart.count
 
 /*
  
