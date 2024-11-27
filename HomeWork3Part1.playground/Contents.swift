@@ -225,7 +225,22 @@ for (index, product) in cart.enumerated() {
     
  */
 
+for (index, product) in cart.enumerated() {
+    let processorValue = product.4
 
+    print("-------------------\(index + 1)-------------------------------")
+
+    switch processorValue {
+    case "Intel":
+        print("Назва товару: \(product.0), Ціна: \(product.1) \(product.2)")
+    case "AMD":
+        print("Назва товару: \(product.0), Ціна: \(product.1) \(product.2)")
+    default:
+        print("Назва товару: \(product.0), Ціна: \(product.1) \(product.2)")
+    }
+
+    print("------------------------------------------------------")
+}
 
 /*
  
