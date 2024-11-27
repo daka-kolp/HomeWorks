@@ -104,9 +104,16 @@ for (index, product) in cart.enumerated() {
     ------------------------------------------------------
  */
 
+var counter1 = 0
 
-
-
+while counter1 < cart.count {
+    let product = cart[counter1]
+    print("-------------------\(counter1 + 1)-------------------------------")
+    print("Назва товару: \(product.0)")
+    print("Ціна: \(product.1) \(product.2)")
+    print("------------------------------------------------------")
+    counter1 += 1
+}
 
 /*
  
