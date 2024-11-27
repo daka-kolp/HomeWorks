@@ -440,10 +440,12 @@ var currency: Currency = .eur
  
  */
 
+struct MotherBoard {
+    var socet: String = "sAM4"
+    var processor: ProcessorType = .amd
+}
 
-
-
-
+var motherBoard: MotherBoard = MotherBoard(socet: "s1151", processor: .intel)
 
 /*
  
