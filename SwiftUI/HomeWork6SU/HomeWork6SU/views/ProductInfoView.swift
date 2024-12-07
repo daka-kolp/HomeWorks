@@ -18,10 +18,10 @@ struct ProductInfoView: View {
                 Text("Code 218525893").font(.caption).foregroundColor(.gray)
                 Spacer()
                 HStack {
-                    Image(systemName: "star.fill").foregroundColor(.yellow)
-                    Image(systemName: "star.fill").foregroundColor(.yellow)
-                    Image(systemName: "star.fill").foregroundColor(.yellow)
-                    Image(systemName: "star.fill").foregroundColor(.yellow)
+                    StarView()
+                    StarView()
+                    StarView()
+                    StarView()
                     Image(systemName: "star").foregroundColor(.gray)
                     Text("54").font(.caption)
                 }
@@ -30,3 +30,8 @@ struct ProductInfoView: View {
     }
 }
 
+struct StarView: View {
+    var body: some View {
+        Image(systemName: "star.fill").foregroundColor(.yellow)
+    }
+}
