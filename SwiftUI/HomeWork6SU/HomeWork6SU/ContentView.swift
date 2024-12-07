@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let width = UIScreen.main.bounds.width
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        VStack (alignment: .leading) {
+            MultimediaView()
+            ProductInfoView()
+            Divider()
+            ProductPriceView()
+            Divider()
+            BuyingButtonsView()
+            
+        }.padding(16.0)
     }
 }
 
