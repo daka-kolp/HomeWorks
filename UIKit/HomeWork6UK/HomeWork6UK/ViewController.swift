@@ -32,6 +32,18 @@ class ViewController: UIViewController {
         print("Buy On Credit Clicked")
     }
     
+    @IBAction func firstIconClicked(_ sender: Any) {
+        print("First Icon Clicked")
+    }
+    
+    @IBAction func secondIconClicked(_ sender: Any) {
+        print("Second Icon Clicked")
+    }
+    
+    @IBAction func thirdIconClicked(_ sender: Any) {
+        print("Third Icon Clicked")
+    }
+    
     private func setBuyOnCreditStyle() {
         buyOnCreditButton.layer.borderColor = UIColor.lightGray.cgColor
         buyOnCreditButton.layer.masksToBounds = true
