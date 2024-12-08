@@ -7,10 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    
-    let width = UIScreen.main.bounds.width
-    
+struct ContentView: View {    
     var body: some View {
         VStack (alignment: .leading) {
             MultimediaView()
@@ -19,7 +16,6 @@ struct ContentView: View {
             ProductPriceView()
             Divider()
             BuyingButtonsView()
-            
         }.padding(16.0)
     }
 }

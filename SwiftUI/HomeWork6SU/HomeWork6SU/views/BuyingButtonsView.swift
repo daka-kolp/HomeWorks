@@ -11,9 +11,7 @@ struct BuyingButtonsView: View {
     var body: some View {
         VStack {
             Button(action: {}) {
-                Text("Buy On Credit")
-                    .padding(8.0)
-                    .foregroundColor(.green)
+                Text("Buy On Credit").padding(8.0).foregroundColor(.green)
             }.padding(4.0).frame(maxWidth: .infinity).background(
                 RoundedRectangle(cornerRadius: 10.0, style: .continuous).stroke(.gray, lineWidth: 1.0)
             )
