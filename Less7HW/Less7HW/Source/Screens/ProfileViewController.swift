@@ -8,9 +8,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
-    @IBOutlet weak var avaImageView: UIImageView!
     
+    @IBOutlet weak var avaImageView: UIImageView!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var eMailLabel: UILabel!
@@ -23,21 +22,18 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func loadUserDataButtonAction(_ sender: UIButton) {
-        
-        dataProvider.loadUserData()
+        dataProvider.loadUserData { self.updateUI($0) }
     }
     
     @IBAction func loadAdminDataButtonAction(_ sender: UIButton) {
-        
-        dataProvider.loadAdminData()
+        dataProvider.loadAdminData { self.updateUI($0) }
     }
     
-    func updateUI() {
-        
-//        avaImageView.image = UIImage(named: "")
-//        firstNameLabel.text =
-//        lastNameLabel.text =
-//        eMailLabel.text =
-//        addressLabel.text =
+    func updateUI(_ profile: ProfileData) {
+        avaImageView.image = UIImage(named: profile.avatarName)
+        firstNameLabel.text = profile.firstName
+        lastNameLabel.text = profile.lastName
+        eMailLabel.text = profile.email
+        addressLabel.text = profile.adderss
     }
 }

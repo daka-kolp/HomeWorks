@@ -16,6 +16,7 @@
 		CEEEFE322BA077C100D443D1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEFE312BA077C100D443D1 /* UserModel.swift */; };
 		CEEEFE342BA077DA00D443D1 /* AdminModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEFE332BA077DA00D443D1 /* AdminModel.swift */; };
 		CEEEFE392BA0793500D443D1 /* DataProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEFE382BA0793500D443D1 /* DataProviderService.swift */; };
+		FD1EE8322D08AF2200FF9768 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1EE8312D08AF2200FF9768 /* ProfileData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CEEEFE312BA077C100D443D1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CEEEFE332BA077DA00D443D1 /* AdminModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminModel.swift; sourceTree = "<group>"; };
 		CEEEFE382BA0793500D443D1 /* DataProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderService.swift; sourceTree = "<group>"; };
+		FD1EE8312D08AF2200FF9768 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				CEEEFE312BA077C100D443D1 /* UserModel.swift */,
 				CEEEFE332BA077DA00D443D1 /* AdminModel.swift */,
+				FD1EE8312D08AF2200FF9768 /* ProfileData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			files = (
 				CEEEFE392BA0793500D443D1 /* DataProviderService.swift in Sources */,
 				CEEEFE142BA0673500D443D1 /* AppDelegate.swift in Sources */,
+				FD1EE8322D08AF2200FF9768 /* ProfileData.swift in Sources */,
 				CEEEFE302BA06C4F00D443D1 /* ProfileViewController.swift in Sources */,
 				CEEEFE322BA077C100D443D1 /* UserModel.swift in Sources */,
 				CEEEFE342BA077DA00D443D1 /* AdminModel.swift in Sources */,

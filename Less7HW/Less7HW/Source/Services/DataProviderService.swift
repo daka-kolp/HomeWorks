@@ -7,10 +7,10 @@
 
 import Foundation
 
+typealias Callback = (ProfileData) -> ()
+
 class DataProviderService {
-    
-    func loadUserData() {
-        
+    func loadUserData(_ callback: Callback) {
         let user = UserModel(
             userAvatarName: "userAvatar",
             userFirstName: "John",
@@ -18,10 +18,10 @@ class DataProviderService {
             userEmail: "john.smith@gmail.com",
             userAdderss: "Green Bay, 1442 Sycamore Lake Road"
         )
+        callback(user)
     }
     
-    func loadAdminData() {
-        
+    func loadAdminData(_ callback: Callback) {
         let admin = AdminModel(
             adminAvatarName: "adminAvatar",
             adminFirstName: "Bob",
@@ -29,5 +29,6 @@ class DataProviderService {
             adminEmail: "bob.lester@gmail.com",
             adminAdderss: "Russellville, 1171 Cambridge Court"
         )
+        callback(admin)
     }
 }
