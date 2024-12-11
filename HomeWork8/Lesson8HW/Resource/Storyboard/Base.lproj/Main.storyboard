@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qWX-du-t0T">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="eSB-hF-34t">
+            <objects>
+                <navigationController id="qWX-du-t0T" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k1o-Ec-4et">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="viL-ng-J3G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ovv-Cw-xgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-601" y="1"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="Lesson8HW" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U5w-8p-BTN">
+                                <rect key="frame" x="0.0" y="439.33333333333331" width="393" height="42.666666666666686"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXv-f0-UAW">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="42.666666666666664"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrowshape.right" catalog="system" title="ARC">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="2jq-2u-sYW" kind="show" id="nf6-BZ-10S"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="U5w-8p-BTN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VEm-6i-97K"/>
+                            <constraint firstItem="U5w-8p-BTN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="YVv-u8-fTT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U5w-8p-BTN" secondAttribute="trailing" id="YXy-bl-pZD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WKu-pd-dJ7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="2"/>
+        </scene>
+        <!--Green View Controller-->
+        <scene sceneID="Juh-jw-jEd">
+            <objects>
+                <viewController storyboardIdentifier="GreenViewController" id="2jq-2u-sYW" customClass="GreenViewController" customModule="Lesson8HW" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OvJ-6A-b6f">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kKi-Xb-P6e">
+                                <rect key="frame" x="0.0" y="388.66666666666669" width="393" height="144.00000000000006"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MZ-1O-WcX">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="42.666666666666664"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrowshape.right" catalog="system" title="Показати жовтий екран">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="showYellowScreen:" destination="2jq-2u-sYW" eventType="touchUpInside" id="9gf-t2-czM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lg-W3-7Oo" userLabel="Показати синій екран">
+                                        <rect key="frame" x="0.0" y="50.666666666666629" width="393" height="42.666666666666657"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrowshape.right" catalog="system" title="Показати синій екран">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="showBlueScreen:" destination="2jq-2u-sYW" eventType="touchUpInside" id="f3B-wu-iM1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1J-4a-M1b" userLabel="Показати синій екран">
+                                        <rect key="frame" x="0.0" y="101.33333333333331" width="393" height="42.666666666666657"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrowshape.right" catalog="system" title="Показати червоний екран">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="showRedScreen:" destination="2jq-2u-sYW" eventType="touchUpInside" id="FzV-nV-4WN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="71n-9F-uZA"/>
+                        <color key="backgroundColor" name="lightGreeen"/>
+                        <constraints>
+                            <constraint firstItem="kKi-Xb-P6e" firstAttribute="centerY" secondItem="71n-9F-uZA" secondAttribute="centerY" id="8nd-os-Zu9"/>
+                            <constraint firstItem="kKi-Xb-P6e" firstAttribute="leading" secondItem="71n-9F-uZA" secondAttribute="leading" id="DTE-jr-OBT"/>
+                            <constraint firstItem="71n-9F-uZA" firstAttribute="trailing" secondItem="kKi-Xb-P6e" secondAttribute="trailing" id="mq8-Uj-ZFe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vvZ-KS-VZl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLl-7T-Sfm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1350" y="-550"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowshape.right" catalog="system" width="128" height="104"/>
+        <namedColor name="lightGreeen">
+            <color red="0.80202995127165344" green="0.96944552659988403" blue="0.78067321888817576" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
