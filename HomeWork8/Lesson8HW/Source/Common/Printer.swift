@@ -6,12 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 class Printer {
-    
-    var yellowViewController: YellowViewController?
-    var blueViewController: BlueViewController?
-    var redViewController: RedViewController?
+    weak var delegate: TextPrintDelegate?
     
     private var timer: Timer?
     private var seconds: Int = 0
@@ -37,18 +35,14 @@ class Printer {
         
         let secondsText = "\(seconds) секунд"
         
-        if let textToPrint = yellowViewController?.textToPrint() {
-            print("\(textToPrint) \(secondsText)")
-        }
-        
-        if let textToPrint = blueViewController?.textToPrint() {
-            print("\(textToPrint) \(secondsText)")
-        }
-        
-        if let textToPrint = redViewController?.textToPrint() {
+        if let textToPrint = delegate?.textToPrint() {
             print("\(textToPrint) \(secondsText)")
         }
         
         seconds += 1
     }
+}
+
+protocol TextPrintDelegate: UIViewController  {
+    func textToPrint() -> String
 }

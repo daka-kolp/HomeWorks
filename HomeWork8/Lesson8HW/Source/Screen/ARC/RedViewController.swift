@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RedViewController: UIViewController {
+class RedViewController: UIViewController, TextPrintDelegate {
     
     var printer: Printer!
     
@@ -42,7 +42,7 @@ private extension RedViewController {
     func setup() {
         
         printer = Printer()
-        printer.redViewController = self
+        printer.delegate = self
         
         printer.startPrinting()
     }
