@@ -29,5 +29,7 @@ class SignUpView: UIView {
     // MARK: - Actions
     @IBAction func signUpButtonAction(_ sender: UIButton) {
         cvvTextField.text = ""
+        
+        self.endEditing(true)
     }
 }
