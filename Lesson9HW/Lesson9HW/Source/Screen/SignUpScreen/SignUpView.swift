@@ -32,4 +32,15 @@ class SignUpView: UIView {
         
         self.endEditing(true)
     }
+    
+    
+    func setKeyboardType() {
+        emailNameTextField.keyboardType = .emailAddress
+        passwordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.isSecureTextEntry = true
+        cvvTextField.isSecureTextEntry = true
+        cardNumberTextField.keyboardType = .numberPad
+        expDateTextField.keyboardType = .numbersAndPunctuation
+        cvvTextField.keyboardType = .numberPad
+    }
 }
