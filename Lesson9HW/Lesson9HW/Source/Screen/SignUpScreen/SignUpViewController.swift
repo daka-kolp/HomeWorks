@@ -41,9 +41,4 @@ extension SignUpViewController: UITextFieldDelegate {
       
         return true
     }
-    
-    func setReturnKeyType(for textField: UITextField) {
-        textField.returnKeyType = .done
-    }
-    
 }
