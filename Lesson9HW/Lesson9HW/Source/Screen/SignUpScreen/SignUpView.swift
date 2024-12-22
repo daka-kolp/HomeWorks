@@ -28,13 +28,34 @@ class SignUpView: UIView {
     
     // MARK: - Actions
     @IBAction func signUpButtonAction(_ sender: UIButton) {
-        cvvTextField.text = ""
-        
         self.endEditing(true)
     }
     
-    
-    func setKeyboardType() {
+    func setKeyboardSettingsForTextFields(_ delegate: UITextFieldDelegate) {
+        firstNameTextField.delegate = delegate
+        lastNameTextField.delegate = delegate
+        emailNameTextField.delegate = delegate
+        passwordTextField.delegate = delegate
+        confirmPasswordTextField.delegate = delegate
+        countryTextField.delegate = delegate
+        cityTextField.delegate = delegate
+        addressTextField.delegate = delegate
+        cardNumberTextField.delegate = delegate
+        expDateTextField.delegate = delegate
+        cvvTextField.delegate = delegate
+        
+        firstNameTextField.returnKeyType = .done
+        lastNameTextField.returnKeyType = .done
+        emailNameTextField.returnKeyType = .done
+        passwordTextField.returnKeyType = .done
+        confirmPasswordTextField.returnKeyType = .done
+        countryTextField.returnKeyType = .done
+        cityTextField.returnKeyType = .done
+        addressTextField.returnKeyType = .done
+        cardNumberTextField.returnKeyType = .done
+        expDateTextField.returnKeyType = .done
+        cvvTextField.returnKeyType = .done
+        
         emailNameTextField.keyboardType = .emailAddress
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
