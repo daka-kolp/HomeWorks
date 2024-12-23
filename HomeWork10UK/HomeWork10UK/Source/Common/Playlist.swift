@@ -27,3 +27,13 @@ struct Song: Decodable {
         case genre
     }
 }
+
+struct SongsByGenre {
+    let title: String
+    var songs: [Song]
+}
+
+struct SongsByAuthor {
+    let author: String
+    var songs: [Song]
+}

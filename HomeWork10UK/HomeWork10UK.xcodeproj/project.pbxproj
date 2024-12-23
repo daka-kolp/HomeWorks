@@ -39,6 +39,7 @@
 		CE1C53162D15A57200E7F5EB /* PlaylistModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C52FD2D15A57200E7F5EB /* PlaylistModesViewController.swift */; };
 		CE1C53172D15A57200E7F5EB /* MainPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C52EA2D15A57200E7F5EB /* MainPlaylistView.swift */; };
 		CE1C53182D15A57200E7F5EB /* PlaylistByGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C52F52D15A57200E7F5EB /* PlaylistByGenreViewController.swift */; };
+		FDA7EEF52D199D79009BA1C6 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EEF42D199D79009BA1C6 /* SongCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		CE1C52FF2D15A57200E7F5EB /* PlaylistMoveDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistMoveDeleteModel.swift; sourceTree = "<group>"; };
 		CE1C53002D15A57200E7F5EB /* PlaylistMoveDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistMoveDeleteView.swift; sourceTree = "<group>"; };
 		CE1C53012D15A57200E7F5EB /* PlaylistMoveDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistMoveDeleteViewController.swift; sourceTree = "<group>"; };
+		FDA7EEF42D199D79009BA1C6 /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		CE1C52D62D15A46000E7F5EB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FDA7EEF42D199D79009BA1C6 /* SongCell.swift */,
 				CE1C52D72D15A47200E7F5EB /* Playlist.swift */,
 			);
 			path = Common;
@@ -378,6 +381,7 @@
 				CE1C53032D15A57200E7F5EB /* PlaylistModesView.swift in Sources */,
 				CE1C53042D15A57200E7F5EB /* PlaylistMoveDeleteView.swift in Sources */,
 				CE1C53052D15A57200E7F5EB /* MainViewController.swift in Sources */,
+				FDA7EEF52D199D79009BA1C6 /* SongCell.swift in Sources */,
 				CE1C53062D15A57200E7F5EB /* PlaylistDeleteView.swift in Sources */,
 				CE1C53072D15A57200E7F5EB /* PlaylistByGenreView.swift in Sources */,
 				CE1C53082D15A57200E7F5EB /* InitialViewController.swift in Sources */,

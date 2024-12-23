@@ -48,13 +48,17 @@ extension MainPlaylistViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainPlaylistCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "song_cell") as? SongCell
         else {
             assertionFailure()
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = model.items[indexPath.row].songTitle
+        let item = model.items[indexPath.row]
+        cell.title?.text = item.songTitle
+        cell.author?.text = item.author
+        cell.album?.text = item.albumTitle
+        cell.genre?.text = item.genre
         
         return cell
     }
