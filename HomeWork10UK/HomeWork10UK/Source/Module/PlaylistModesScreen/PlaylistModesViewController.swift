@@ -70,7 +70,14 @@ extension PlaylistModesViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return model.songsByGenre.count
+        switch mode {
+        case .all:
+            return 1
+        case .genre:
+            return model.songsByGenre.count
+        case .author:
+            return model.songsByAuthor.count
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
