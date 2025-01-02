@@ -42,7 +42,6 @@ extension ViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        
         cell.cardTextView.text = "Item \(indexPath.row)"
         cell.cardImageView.image = UIImage(named: "image")
         return cell
