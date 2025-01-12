@@ -16,7 +16,7 @@ class MainModel {
     
     var productsInfo: String = ""
     
-    func loadThreeProduct(ids: [Int]) {
+    func loadProductsByIds(ids: [Int]) {
         DispatchQueue.global(qos: .default).async { [weak self] in
             guard let self else { return }
             

@@ -30,8 +30,8 @@ extension MainViewController: MainModelDelegate {
 }
 
 extension MainViewController: MainViewDelegate {
-    func loadThreeProductById(ids: [Int]) {
-        model.loadThreeProduct(ids: ids)
+    func loadProductsByIds(ids: [Int]) {
+        model.loadProductsByIds(ids: ids)
     }
     
     func loadProductById(id: Int) {

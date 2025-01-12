@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainViewDelegate: AnyObject {
-    func loadThreeProductById(ids: [Int])
+    func loadProductsByIds(ids: [Int])
     
     func loadProductById(id: Int)
 }
@@ -24,7 +24,7 @@ class MainView: UIView {
     }
     
     @IBAction func getThreeProducts(_ sender: UIButton) {
-        delegate?.loadThreeProductById(ids: [3, 5, 10])
+        delegate?.loadProductsByIds(ids: [3, 5, 10])
     }
 
     @IBAction func getOneProduct(_ sender: UIButton) {

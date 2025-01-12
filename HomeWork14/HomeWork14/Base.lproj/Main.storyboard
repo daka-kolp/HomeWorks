@@ -20,12 +20,12 @@
                                 <rect key="frame" x="24" y="83" width="345" height="711"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTz-Ig-oUO" userLabel="GetThreeProducts">
-                                        <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="136.33333333333334" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="750" constant="75" id="FgL-Cv-oOy"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="get 3 prioducts"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="get 3 products"/>
                                         <connections>
                                             <action selector="getThreeProducts:" destination="qbR-pJ-dcS" eventType="touchUpInside" id="IXh-tF-8LD"/>
                                             <action selector="getThreeProducts:" destination="7yO-Id-dwR" eventType="touchUpInside" id="s7t-EQ-ljU"/>
