@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="HomeWork14" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yO-Id-dwR" customClass="MainView" customModule="HomeWork14">
+                                <rect key="frame" x="24" y="83" width="345" height="711"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTz-Ig-oUO" userLabel="GetThreeProducts">
+                                        <rect key="frame" x="0.0" y="0.0" width="136.33333333333334" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="750" constant="75" id="FgL-Cv-oOy"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="get 3 products"/>
+                                        <connections>
+                                            <action selector="getThreeProducts:" destination="qbR-pJ-dcS" eventType="touchUpInside" id="IXh-tF-8LD"/>
+                                            <action selector="getThreeProducts:" destination="7yO-Id-dwR" eventType="touchUpInside" id="s7t-EQ-ljU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYP-4m-q1g" userLabel="GetOneProduct">
+                                        <rect key="frame" x="220" y="0.0" width="125" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="750" constant="75" id="qHY-lP-aTm"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="get 1 product"/>
+                                        <connections>
+                                            <action selector="getOneProduct:" destination="7yO-Id-dwR" eventType="touchUpInside" id="ASI-PL-K20"/>
+                                            <action selector="getOneProduct:" destination="qbR-pJ-dcS" eventType="touchUpInside" id="B48-tW-Kf4"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Press any button to get data..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JrQ-xe-VMO" userLabel="ProductInfo">
+                                        <rect key="frame" x="0.0" y="59" width="345" height="652"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="JrQ-xe-VMO" firstAttribute="leading" secondItem="7yO-Id-dwR" secondAttribute="leading" id="6t8-v7-ht2"/>
+                                    <constraint firstAttribute="trailing" secondItem="JrQ-xe-VMO" secondAttribute="trailing" id="RVk-Ag-GK2"/>
+                                    <constraint firstItem="yYP-4m-q1g" firstAttribute="top" secondItem="7yO-Id-dwR" secondAttribute="top" id="cIM-Jx-CZo"/>
+                                    <constraint firstItem="yYP-4m-q1g" firstAttribute="leading" secondItem="WTz-Ig-oUO" secondAttribute="trailing" priority="250" constant="64" id="dFz-Wc-uQs"/>
+                                    <constraint firstItem="WTz-Ig-oUO" firstAttribute="top" secondItem="7yO-Id-dwR" secondAttribute="top" id="gNH-5D-dNJ"/>
+                                    <constraint firstItem="WTz-Ig-oUO" firstAttribute="leading" secondItem="7yO-Id-dwR" secondAttribute="leading" id="h8G-AG-4Dg"/>
+                                    <constraint firstAttribute="trailing" secondItem="yYP-4m-q1g" secondAttribute="trailing" id="pdU-VQ-CQ5"/>
+                                    <constraint firstAttribute="bottom" secondItem="JrQ-xe-VMO" secondAttribute="bottom" id="sC5-1D-3iG"/>
+                                    <constraint firstItem="JrQ-xe-VMO" firstAttribute="top" secondItem="WTz-Ig-oUO" secondAttribute="bottom" constant="24" id="vhX-gV-Cp0"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="txt" destination="JrQ-xe-VMO" id="0su-6D-Uky"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7yO-Id-dwR" secondAttribute="bottom" constant="24" id="H65-ok-Uq6"/>
+                            <constraint firstItem="7yO-Id-dwR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="KUU-S2-EsD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7yO-Id-dwR" secondAttribute="trailing" constant="24" id="hNn-55-Mm7"/>
+                            <constraint firstItem="7yO-Id-dwR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="iEj-KH-VxK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainView" destination="7yO-Id-dwR" id="XFZ-bA-HGU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="qbR-pJ-dcS" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-89" y="-27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
