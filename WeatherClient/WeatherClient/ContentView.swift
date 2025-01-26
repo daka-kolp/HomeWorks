@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var cityName = ""
+    @State private var latitude = ""
+    @State private var longitude = ""
+    @State private var isCity = true
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            TextField("City", text: $cityName)
+            Spacer().frame(height: 16.0)
+            TextField("Lat", text: $latitude).keyboardType(.numbersAndPunctuation)
+            TextField("Long", text: $longitude).keyboardType(.numbersAndPunctuation)
+            Spacer().frame(height: 16.0)
+            Toggle("By city (true) / By coordinates (false)", isOn: $isCity)
+            Spacer().frame(height: 16.0)
+            Button("Get Weather Data") {
+                //TODO: send request
+            }
         }
         .padding()
     }
