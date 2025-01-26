@@ -17,25 +17,23 @@ struct WeatheerFormView: View {
     @State private var type = 0
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                TextField("City", text: $cityName)
-                Spacer().frame(height: 16.0)
-                TextField("Lat", text: $latitude).keyboardType(.numbersAndPunctuation)
-                TextField("Long", text: $longitude).keyboardType(.numbersAndPunctuation)
-                Spacer().frame(height: 16.0)
-                Picker(selection: $type, label: Text("Request Type")) {
-                    Text("City").tag(0)
-                    Text("Coordinates").tag(1)
-                }.pickerStyle(SegmentedPickerStyle())
-                Spacer().frame(height: 16.0)
-                Button("Get Weather Data") { getWeather() }
-                
-                Spacer().frame(height: 32.0)
-                Text(weatherViewModel.stateToString)
-            }
-            .padding()
+        VStack {
+            TextField("City", text: $cityName)
+            Spacer().frame(height: 16.0)
+            TextField("Lat", text: $latitude).keyboardType(.numbersAndPunctuation)
+            TextField("Long", text: $longitude).keyboardType(.numbersAndPunctuation)
+            Spacer().frame(height: 16.0)
+            Picker(selection: $type, label: Text("Request Type")) {
+                Text("City").tag(0)
+                Text("Coordinates").tag(1)
+            }.pickerStyle(SegmentedPickerStyle())
+            Spacer().frame(height: 16.0)
+            Button("Get Weather Data") { getWeather() }
+            
+            Spacer().frame(height: 32.0)
+            Text(weatherViewModel.stateToString)
         }
+        .padding()
     }
     
     private func getWeather() {
