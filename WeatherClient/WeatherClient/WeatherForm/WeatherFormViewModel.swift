@@ -16,11 +16,11 @@ enum WeatherState {
 
 @MainActor
 class WeatherFormViewModel: ObservableObject {
-    private let repo: WeathwrRepo
+    private let repo: WeatherRepo
     
     private let cityName = "Kyiv"
     
-    init(repo: WeathwrRepo = WeathwrRepo()) {
+    init(repo: WeatherRepo = WeatherRepo()) {
         self.repo = repo
     }
     

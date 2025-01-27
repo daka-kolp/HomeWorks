@@ -5,11 +5,9 @@
 //  Created by Daria Kolpakova on 26.01.2025.
 //
 
-
 import Foundation
 
-
-class WeathwrRepo {
+class WeatherRepo {
     private let fileService: FileServiceProtocol
     private let networkService: NetworkServiceProtocol
     
@@ -42,7 +40,6 @@ class WeathwrRepo {
     func loadWeather() throws -> WeatherFileData {
         return try fileService.load(WeatherFileData.self, from: "weather.json")
     }
-    
     
     private func fetchWeather(urlString: String) async -> Result<Weather, Error> {
         return await networkService.request(
