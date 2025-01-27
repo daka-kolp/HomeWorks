@@ -30,12 +30,18 @@ actor WeathwrService {
         guard let url = URL(string: urlString) else {
             return .failure(NSError(domain: "Url is invalid",  code: -1, userInfo: nil))
         }
-        return await perfotmRequest(url: url, responceType: WeatherModel.self)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        
+        return await perfotmRequest(urlRequest: urlRequest, responceType: WeatherModel.self)
     }
     
-    private func perfotmRequest<T: Decodable>(url: URL, responceType: T.Type) async -> Result<T, Error> {
+    private func perfotmRequest<T: Decodable>(
+        urlRequest: URLRequest,
+        responceType: T.Type
+    ) async -> Result<T, Error> {
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 return .failure(NSError(domain: "Invalid response, check params", code: -1, userInfo: nil))
             }

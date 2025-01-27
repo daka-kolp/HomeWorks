@@ -42,10 +42,10 @@ struct WeatheerFormView: View {
             case 0:
                 await weatherViewModel.fetchWeather(by: cityName)
             case 1:
-                await weatherViewModel.fetchWeather(
-                    lat: Double(latitude)!,
-                    long: Double(longitude)!
-                )
+                guard let  lat = Double(latitude), let long = Double(longitude) else {
+                    return
+                }
+                await weatherViewModel.fetchWeather(lat: lat, long: long)
             default:
                 print("No Option Selected")
             }
