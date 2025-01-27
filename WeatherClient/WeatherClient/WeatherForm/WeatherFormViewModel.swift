@@ -16,30 +16,51 @@ enum WeatherState {
 
 @MainActor
 class WeatherFormViewModel: ObservableObject {
+    private let repo: WeathwrRepo
     
-    @Published var state: WeatherState = .initial
-    private let service = WeathwrService()
+    private let cityName = "Kyiv"
     
-    func fetchWeather(by cityName: String) async {
-        self.state = .loading
-        
-        let result = await service.fetchWeather(city: cityName)
-        switch result {
-        case .success (let weather):
-            self.state = .loaded(weather)
-        case .failure (let error):
-            self.state = .error(error)
-        }
+    init(repo: WeathwrRepo = WeathwrRepo()) {
+        self.repo = repo
     }
     
+    @Published var state: WeatherState = .initial
+    @Published var weatherInfo: String = ""
     
-    func fetchWeather(lat: Double, long: Double) async {
+    
+    func fetchWeather() async {
         self.state = .loading
         
-        let result = await service.fetchWeather(lat: lat, long: long)
+        guard let weatherFileData = try? repo.loadWeather() else {
+            await saveWeather()
+            weatherInfo = "weather was not exist, saved"
+            return
+        }
+        
+        let savedDateTime = weatherFileData.dateTime
+        let updateDateTime = Calendar.current.date(byAdding: .hour, value: 3, to: savedDateTime)!
+        
+        if (updateDateTime < Date.now) {
+            await saveWeather()
+            weatherInfo = "weather has been just updated"
+        } else {
+            self.state = .loaded(WeatherModel.init(fromFileData: weatherFileData))
+            weatherInfo = "weather is already saved, next available update: \(updateDateTime.formatted())"
+        }
+        
+    }
+    
+    private func saveWeather() async {
+        let result = await repo.fetchWeather(city: cityName)
+        
         switch result {
         case .success (let weather):
-            self.state = .loaded(weather)
+            do {
+                try repo.saveWeather(data: weather)
+                self.state = .loaded(WeatherModel.init(fromNetworkData: weather))
+            } catch {
+                self.state = .error(error)
+            }
         case .failure (let error):
             self.state = .error(error)
         }
