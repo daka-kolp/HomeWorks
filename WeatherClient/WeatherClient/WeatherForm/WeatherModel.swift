@@ -33,16 +33,6 @@ class WeatherModel {
         self.weatherDesc = weatherDesc
         self.windDesc = windDesc
     }
-
-    init (fromNetworkData entity: Weather) {
-        self.dateTime = Date()
-        self.name = entity.name
-        self.temperature = entity.temperature
-        self.pressure = entity.pressure
-        self.humidity = entity.humidity
-        self.weatherDesc = entity.weatherDesc
-        self.windDesc = entity.windDesc
-    }
     
     init (fromFileData fileData: WeatherFileData) {
         self.dateTime = fileData.dateTime

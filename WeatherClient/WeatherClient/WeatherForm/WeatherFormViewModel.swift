@@ -57,7 +57,11 @@ class WeatherFormViewModel: ObservableObject {
         case .success (let weather):
             do {
                 try repo.saveWeather(data: weather)
-                self.state = .loaded(WeatherModel.init(fromNetworkData: weather))
+                
+                //Результат на екрані має завжди виводитися з файлової системи
+                let weatherFileData = try repo.loadWeather()
+                
+                self.state = .loaded(WeatherModel.init(fromFileData: weatherFileData))
             } catch {
                 self.state = .error(error)
             }
