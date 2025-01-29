@@ -5,7 +5,7 @@
 //  Created by Daria Kolpakova on 26.01.2025.
 //
 
-struct WeatherModel: Decodable {
+struct Weather: Decodable {
     let name: String
     let main: WeatherParams
     let weather: [WeatherDescription]
@@ -31,11 +31,6 @@ struct WeatherModel: Decodable {
     var windDesc: String {
         get { return "\(wind.direction), \(wind.speed) m/s" }
     }
-    
-    func toString() -> String {
-        return "\(name)\n\n\(temperature)\n\(pressure)\n\(humidity)\n\(weatherDesc)\n\(windDesc)"
-    }
-    
 }
 
 struct WeatherParams: Decodable {
