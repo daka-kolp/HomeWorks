@@ -47,6 +47,10 @@ class WeatherRepo {
         coreDataService.deleteWeather(name: name)
     }
     
+    func loadAllCDWeather() -> [CDWeather]{
+        return coreDataService.fetchAllWeather()
+    }
+    
     private func fetchWeather(urlString: String) async -> Result<Weather, Error> {
         return await networkService.request(
             endpoint: urlString,

@@ -15,30 +15,46 @@ extension CoreDataService {
     }
     
     func updateWeather(weather: Weather) -> CDWeather? {
-        guard let fetchedWeather = fetchWeather(name: weather.name) else { return nil }
-        saveCDWeather(cdWeather: fetchedWeather, weather: weather)
-        return fetchedWeather
-    }
-    
-    
-    func deleteWeather(name: String) {
-        let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        guard let cdWeather = fetchWeather(name: weather.name) else { return nil }
         
-        deleteRecords(CDWeather.self, fetchRequest: fetchRequest)
+        deleteRelatedWeatherDescriptions(cdWeather)
+        
+        saveCDWeather(cdWeather: cdWeather, weather: weather)
+        return cdWeather
     }
     
     func fetchWeather(name: String) -> CDWeather? {
-        let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
-        
-        let result = fetchDataFromEntity(CDWeather.self, fetchRequest: fetchRequest)
+        let result = fetchDataFromEntity(CDWeather.self, fetchRequest: weatherFetchRequest(name))
         return result.first
+    }
+    
+    func deleteWeather(name: String) {
+        let cdWeather = fetchWeather(name: name)
+        guard let cdWeather = cdWeather else { return }
+        
+        deleteRelatedWeatherDescriptions(cdWeather)
+        
+        deleteRecords(CDWeather.self, fetchRequest: weatherFetchRequest(name))
     }
     
     func fetchAllWeather() -> [CDWeather] {
         let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
         return fetchDataFromEntity(CDWeather.self, fetchRequest: fetchRequest)
+    }
+
+    private func deleteRelatedWeatherDescriptions(_ cdWeather: CDWeather) {
+        for d in cdWeather.weatherDescriptions ?? [] {
+            guard let value = d as? CDWeatherDescription else { continue }
+            let fetchRequest: NSFetchRequest<CDWeatherDescription> = CDWeatherDescription.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %d", value.id)
+            deleteRecords(CDWeatherDescription.self, fetchRequest: fetchRequest)
+        }
+    }
+    
+    private func weatherFetchRequest(_ name: String) -> NSFetchRequest<CDWeather>{
+        let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        return fetchRequest
     }
     
     private func saveCDWeather(cdWeather: CDWeather, weather: Weather) {

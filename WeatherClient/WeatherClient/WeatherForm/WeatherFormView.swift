@@ -24,9 +24,14 @@ struct WeatheerFormView: View {
             Button("Get Weather Data") { getWeather() }
         }
         .padding(16.0)
+        .onAppear() { deleteOldRecords() }
     }
     
     private func getWeather() {
         Task { await weatherViewModel.fetchWeather(cityName) }
+    }
+    
+    private func deleteOldRecords() {
+        weatherViewModel.deleteOldRecords()
     }
 }
