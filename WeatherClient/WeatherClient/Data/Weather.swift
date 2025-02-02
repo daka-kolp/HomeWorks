@@ -6,6 +6,7 @@
 //
 
 struct Weather: Decodable {
+    let id: Int
     let name: String
     let main: WeatherParams
     let weather: [WeatherDescription]
@@ -40,6 +41,7 @@ struct WeatherParams: Decodable {
 }
 
 struct WeatherDescription: Decodable {
+    let id: Int
     let main: String
     let description: String
     let icon: String

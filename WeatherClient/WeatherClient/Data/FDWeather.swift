@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherFileData: Codable {
+struct FDWeather: Codable {
     let dateTime: Date
     let name: String
     let temperature: String

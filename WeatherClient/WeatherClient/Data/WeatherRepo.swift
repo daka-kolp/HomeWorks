@@ -33,12 +33,12 @@ class WeatherRepo {
     }
     
     func saveWeather(data: Weather) throws {
-        let weatherFileData = WeatherFileData(fromNetworkData: data)
+        let weatherFileData = FDWeather(fromNetworkData: data)
         try fileService.save(weatherFileData, to: "weather.json")
     }
     
-    func loadWeather() throws -> WeatherFileData {
-        return try fileService.load(WeatherFileData.self, from: "weather.json")
+    func loadWeather() throws -> FDWeather {
+        return try fileService.load(FDWeather.self, from: "weather.json")
     }
     
     private func fetchWeather(urlString: String) async -> Result<Weather, Error> {
