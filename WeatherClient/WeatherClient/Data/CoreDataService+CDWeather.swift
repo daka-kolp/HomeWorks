@@ -8,43 +8,61 @@
 import CoreData
 
 extension CoreDataService {
+    func insertWeather(weather: Weather) -> CDWeather {
+        let cdWeather = CDWeather(context: context)
+        saveCDWeather(cdWeather: cdWeather, weather: weather)
+        return cdWeather
+    }
     
-    func createWeather(weather: Weather) -> CDWeather? {
-        let weatherEntity = NSEntityDescription.entity(forEntityName: "CDWeather", in: context)!
-        let weatherManagedObjectModel = NSManagedObject(entity: weatherEntity, insertInto: context)
+    func updateWeather(weather: Weather) -> CDWeather? {
+        guard let fetchedWeather = fetchWeather(name: weather.name) else { return nil }
+        saveCDWeather(cdWeather: fetchedWeather, weather: weather)
+        return fetchedWeather
+    }
+    
+    
+    func deleteWeather(name: String) {
+        let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
-        weatherManagedObjectModel.setValue(weather.id, forKey: "id")
-        weatherManagedObjectModel.setValue(weather.name, forKey: "name")
-        weatherManagedObjectModel.setValue(weather.temperature, forKey: "temperature")
-        weatherManagedObjectModel.setValue(weather.pressure, forKey: "pressure")
-        weatherManagedObjectModel.setValue(weather.humidity, forKey: "humidity")
-        weatherManagedObjectModel.setValue(weather.windDesc, forKey: "wind")
-        weatherManagedObjectModel.setValue(Date.now, forKey: "dateTime")
+        deleteRecords(CDWeather.self, fetchRequest: fetchRequest)
+    }
+    
+    func fetchWeather(name: String) -> CDWeather? {
+        let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
-        let set = NSMutableSet()
+        let result = fetchDataFromEntity(CDWeather.self, fetchRequest: fetchRequest)
+        return result.first
+    }
+    
+    func fetchAllWeather() -> [CDWeather] {
+        let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
+        return fetchDataFromEntity(CDWeather.self, fetchRequest: fetchRequest)
+    }
+    
+    private func saveCDWeather(cdWeather: CDWeather, weather: Weather) {
+        cdWeather.id = Int32(weather.id)
+        cdWeather.name = weather.name
+        cdWeather.dateTime = Date.now
+        cdWeather.humidity = weather.humidity
+        cdWeather.pressure = weather.pressure
+        cdWeather.temperature = weather.temperature
+        cdWeather.wind = weather.windDesc
         
-        for desc in weather.weather {
-            let descEntity = NSEntityDescription.entity(forEntityName: "CDWeatherDescription", in: context)!
-            let descManagedObjectModel = NSManagedObject(entity: descEntity, insertInto: context)
+        let weatherSet = NSMutableSet()
+        
+        for details in weather.weather {
+            let cdDescription = CDWeatherDescription(context: context)
+            cdDescription.id = Int32(details.id)
+            cdDescription.title = details.main
+            cdDescription.desc = details.description
             
-            descManagedObjectModel.setValue(desc.id, forKey: "id")
-            descManagedObjectModel.setValue(desc.main, forKey: "title")
-            descManagedObjectModel.setValue(desc.description, forKey: "desc")
-            
-            set.add(descManagedObjectModel)
+            weatherSet.add(cdDescription)
         }
         
-        let weatherModel = weatherManagedObjectModel as? CDWeather
+        cdWeather.weatherDescriptions = weatherSet
         
-        weatherModel?.addToWeatherDescriptions(set)
-        
-        do {
-            try context.save()
-        } catch let error {
-            assertionFailure()
-            debugPrint(error.localizedDescription)
-        }
-        
-        return weatherModel
+        save(context: context)
     }
 }

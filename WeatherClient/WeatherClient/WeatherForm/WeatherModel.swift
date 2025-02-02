@@ -34,14 +34,14 @@ class WeatherModel {
         self.windDesc = windDesc
     }
     
-    init (fromFileData fileData: FDWeather) {
-        self.dateTime = fileData.dateTime
-        self.name = fileData.name
-        self.temperature = fileData.temperature
-        self.pressure = fileData.pressure
-        self.humidity = fileData.humidity
-        self.weatherDesc = fileData.weatherDesc
-        self.windDesc = fileData.windDesc
+    init (fromCoreData coreData: CDWeather) {
+        self.dateTime = coreData.dateTime ?? Date.now
+        self.name = coreData.name ?? ""
+        self.temperature = coreData.temperature ?? ""
+        self.pressure = coreData.pressure ?? ""
+        self.humidity = coreData.humidity ?? ""
+        self.weatherDesc = coreData.weatherDescriptions?.map {($0 as? CDWeatherDescription)?.desc ?? ""}.joined(separator: ", ") ?? ""
+        self.windDesc = coreData.wind ?? ""
     }
     
     func toString() -> String {

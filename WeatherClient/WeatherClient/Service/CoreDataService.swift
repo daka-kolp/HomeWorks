@@ -57,7 +57,6 @@ class CoreDataService: NSObject {
 }
 
 extension CoreDataService {
-    
     func fetchDataFromEntity<T>(
         _ type: T.Type,
         context: NSManagedObjectContext? = nil,

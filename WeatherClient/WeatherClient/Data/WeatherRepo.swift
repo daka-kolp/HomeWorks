@@ -8,7 +8,7 @@
 import Foundation
 
 class WeatherRepo {
-    private let fileService: FileServiceProtocol
+    private let coreDataService: CoreDataService
     private let networkService: NetworkServiceProtocol
     
     private let baseUrl = "https://api.openweathermap.org/data/2.5/weather"
@@ -17,7 +17,7 @@ class WeatherRepo {
     
     init() {
         self.networkService = NetworkService()
-        self.fileService = FileService()
+        self.coreDataService = CoreDataService()
     }
     
     func fetchWeather(city: String) async -> Result<Weather, Error> {
@@ -32,13 +32,19 @@ class WeatherRepo {
         return await fetchWeather(urlString: urlString)
     }
     
-    func saveWeather(data: Weather) throws {
-        let weatherFileData = FDWeather(fromNetworkData: data)
-        try fileService.save(weatherFileData, to: "weather.json")
+    func saveCDWeather(data: Weather) -> CDWeather {
+        guard let weather = coreDataService.updateWeather(weather: data) else {
+            return coreDataService.insertWeather(weather: data)
+        }
+        return weather
     }
     
-    func loadWeather() throws -> FDWeather {
-        return try fileService.load(FDWeather.self, from: "weather.json")
+    func loadCDWeather(name: String) -> CDWeather? {
+        return coreDataService.fetchWeather(name: name)
+    }
+    
+    func deleteCDWeather(name: String) {
+        coreDataService.deleteWeather(name: name)
     }
     
     private func fetchWeather(urlString: String) async -> Result<Weather, Error> {

@@ -18,8 +18,6 @@ enum WeatherState {
 class WeatherFormViewModel: ObservableObject {
     private let repo: WeatherRepo
     
-    private let cityName = "Kyiv"
-    
     init(repo: WeatherRepo = WeatherRepo()) {
         self.repo = repo
     }
@@ -28,43 +26,37 @@ class WeatherFormViewModel: ObservableObject {
     @Published var weatherInfo: String = ""
     
     
-    func fetchWeather() async {
+    func fetchWeather(_ cityName: String) async {
         self.state = .loading
         
-        guard let weatherFileData = try? repo.loadWeather() else {
-            await saveWeather()
+        guard let weatherCoreData = repo.loadCDWeather(name: cityName) else {
+            await saveWeather(cityName)
             weatherInfo = "weather was not exist, saved"
             return
         }
         
-        let savedDateTime = weatherFileData.dateTime
+        let weatherModel = WeatherModel.init(fromCoreData: weatherCoreData)
+        
+        let savedDateTime = weatherModel.dateTime
         let updateDateTime = Calendar.current.date(byAdding: .hour, value: 3, to: savedDateTime)!
         
         if (updateDateTime < Date.now) {
-            await saveWeather()
+            await saveWeather(cityName)
             weatherInfo = "weather has been just updated"
         } else {
-            self.state = .loaded(WeatherModel.init(fromFileData: weatherFileData))
+            self.state = .loaded(weatherModel)
             weatherInfo = "weather is already saved, next available update: \(updateDateTime.formatted())"
         }
         
     }
     
-    private func saveWeather() async {
+    private func saveWeather(_ cityName: String) async {
         let result = await repo.fetchWeather(city: cityName)
         
         switch result {
         case .success (let weather):
-            do {
-                try repo.saveWeather(data: weather)
-                
-                //Результат на екрані має завжди виводитися з файлової системи
-                let weatherFileData = try repo.loadWeather()
-                
-                self.state = .loaded(WeatherModel.init(fromFileData: weatherFileData))
-            } catch {
-                self.state = .error(error)
-            }
+            let weather = repo.saveCDWeather(data: weather)
+            self.state = .loaded(WeatherModel.init(fromCoreData: weather))
         case .failure (let error):
             self.state = .error(error)
         }

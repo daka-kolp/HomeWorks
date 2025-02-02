@@ -11,8 +11,12 @@ struct WeatheerFormView: View {
     
     @StateObject private var weatherViewModel = WeatherFormViewModel()
     
+    @State private var cityName = ""
+    
     var body: some View {
         VStack {
+            TextField("City", text: $cityName)
+            Spacer().frame(height: 16.0)
             Text(weatherViewModel.stateToString)
             Spacer().frame(height: 16.0)
             Text(weatherViewModel.weatherInfo).multilineTextAlignment(.center)
@@ -20,10 +24,9 @@ struct WeatheerFormView: View {
             Button("Get Weather Data") { getWeather() }
         }
         .padding(16.0)
-        .onAppear() { getWeather() }
     }
     
     private func getWeather() {
-        Task { await weatherViewModel.fetchWeather() }
+        Task { await weatherViewModel.fetchWeather(cityName) }
     }
 }
