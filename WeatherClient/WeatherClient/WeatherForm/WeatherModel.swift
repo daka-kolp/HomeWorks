@@ -34,7 +34,7 @@ class WeatherModel {
         self.windDesc = windDesc
     }
     
-    init (fromFileData fileData: WeatherFileData) {
+    init (fromFileData fileData: FDWeather) {
         self.dateTime = fileData.dateTime
         self.name = fileData.name
         self.temperature = fileData.temperature
