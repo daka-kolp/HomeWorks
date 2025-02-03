@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24C101" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="CDWeather" representedClassName=".CDWeather" syncable="YES">
-        <attribute name="dateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="humidity" optional="YES" attributeType="String"/>
+        <attribute name="coordinates" optional="YES" attributeType="String"/>
+        <attribute name="dateTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="humidity" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
         <attribute name="pressure" optional="YES" attributeType="String"/>
-        <attribute name="temperature" optional="YES" attributeType="String"/>
-        <attribute name="wind" optional="YES" attributeType="String"/>
+        <attribute name="temperature" attributeType="String"/>
+        <attribute name="wind" attributeType="String"/>
         <relationship name="weatherDescriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDWeatherDescription" inverseName="weather" inverseEntity="CDWeatherDescription"/>
     </entity>
     <entity name="CDWeatherDescription" representedClassName=".CDWeatherDescription" syncable="YES">
-        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="desc" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
         <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWeather" inverseName="weatherDescriptions" inverseEntity="CDWeather"/>
     </entity>
 </model>

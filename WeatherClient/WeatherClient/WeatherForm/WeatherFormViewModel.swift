@@ -11,63 +11,48 @@ enum WeatherState {
     case initial
     case loading
     case loaded(WeatherModel)
-    case error(Error)
+    case error(String)
 }
 
 @MainActor
 class WeatherFormViewModel: ObservableObject {
     private let repo: WeatherRepo
     
-    private let cityName = "Kyiv"
-    
     init(repo: WeatherRepo = WeatherRepo()) {
         self.repo = repo
     }
     
     @Published var state: WeatherState = .initial
-    @Published var weatherInfo: String = ""
     
-    
-    func fetchWeather() async {
+    func fetchWeather(cityName: String) async {
         self.state = .loading
         
-        guard let weatherFileData = try? repo.loadWeather() else {
-            await saveWeather()
-            weatherInfo = "weather was not exist, saved"
-            return
-        }
-        
-        let savedDateTime = weatherFileData.dateTime
-        let updateDateTime = Calendar.current.date(byAdding: .hour, value: 3, to: savedDateTime)!
-        
-        if (updateDateTime < Date.now) {
-            await saveWeather()
-            weatherInfo = "weather has been just updated"
-        } else {
-            self.state = .loaded(WeatherModel.init(fromFileData: weatherFileData))
-            weatherInfo = "weather is already saved, next available update: \(updateDateTime.formatted())"
-        }
-        
-    }
-    
-    private func saveWeather() async {
-        let result = await repo.fetchWeather(city: cityName)
+        let result = await repo.loadWeather(city: cityName)
         
         switch result {
         case .success (let weather):
-            do {
-                try repo.saveWeather(data: weather)
-                
-                //Результат на екрані має завжди виводитися з файлової системи
-                let weatherFileData = try repo.loadWeather()
-                
-                self.state = .loaded(WeatherModel.init(fromFileData: weatherFileData))
-            } catch {
-                self.state = .error(error)
-            }
+            self.state = .loaded(weather)
         case .failure (let error):
-            self.state = .error(error)
+            self.state = .error(error.localizedDescription)
         }
+    }
+    
+    func fetchWeather(lat: Double, long: Double) async {
+        self.state = .loading
+        
+        let result = await repo.loadWeather(lat: lat, long: long)
+        
+        switch result {
+        case .success (let weather):
+            self.state = .loaded(weather)
+        case .failure (let error):
+            self.state = .error(error.localizedDescription)
+        }
+    }
+    
+    
+    func deleteOldRecords() {
+        repo.deleteOldRecords()
     }
     
     var stateToString: String {
