@@ -2,7 +2,7 @@
 //  CDWeatherDescription+CoreDataClass.swift
 //  WeatherClient
 //
-//  Created by Daria Kolpakova on 02.02.2025.
+//  Created by Daria Kolpakova on 03.02.2025.
 //
 //
 

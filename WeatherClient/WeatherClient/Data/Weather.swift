@@ -9,9 +9,9 @@ struct Weather: Decodable {
     let id: Int
     let name: String
     let main: WeatherParams
+    let coord: Coordinates
     let weather: [WeatherDescription]
     let wind: Wind
-    
     
     var temperature: String {
         get { return "\(main.temp) C" }
@@ -23,6 +23,10 @@ struct Weather: Decodable {
     
     var humidity: String {
         get { return "\(main.humidity) %" }
+    }
+    
+    var coordinates: String {
+        get { return "\(coord.lon), \(coord.lat)" }
     }
     
     var weatherDesc: String {
@@ -38,6 +42,11 @@ struct WeatherParams: Decodable {
     let temp: Double
     let pressure: Double
     let humidity: Double
+}
+
+struct Coordinates: Decodable {
+    let lon: Double
+    let lat: Double
 }
 
 struct WeatherDescription: Decodable {

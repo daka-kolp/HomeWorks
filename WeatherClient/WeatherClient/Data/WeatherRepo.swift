@@ -38,13 +38,18 @@ class WeatherRepo {
         }
         return weather
     }
-    
-    func loadCDWeather(name: String) -> CDWeather? {
-        return coreDataService.fetchWeather(name: name)
+
+    func loadCDWeather(city: String) -> CDWeather? {
+        return coreDataService.fetchWeather(city: city)
     }
     
-    func deleteCDWeather(name: String) {
-        coreDataService.deleteWeather(name: name)
+    func loadCDWeather(lat: Double, long: Double) -> CDWeather? {
+        let coordinates = "\(lat), \(long)"
+        return coreDataService.fetchWeather(coordinates: coordinates)
+    }
+    
+    func deleteCDWeather(coordinates: String) {
+        coreDataService.deleteWeather(coordinates: coordinates)
     }
     
     func loadAllCDWeather() -> [CDWeather]{

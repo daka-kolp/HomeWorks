@@ -23,54 +23,36 @@ class WeatherFormViewModel: ObservableObject {
     }
     
     @Published var state: WeatherState = .initial
-    @Published var weatherInfo: String = ""
     
-    func fetchWeather(_ cityName: String) async {
+    func fetchWeather(cityName: String) async {
         self.state = .loading
         
-        guard let weatherCoreData = repo.loadCDWeather(name: cityName) else {
-            await saveWeather(cityName, infoOnSuccess: "weather was not exist, saved")
-            return
-        }
-        
-        let weatherModel = WeatherModel.init(fromCoreData: weatherCoreData)
-        
-        let savedDateTime = weatherModel.dateTime
-        let updateDateTime = Calendar.current.date(byAdding: .hour, value: 3, to: savedDateTime)!
-        
-        if (updateDateTime < Date.now) {
-            await saveWeather(cityName, infoOnSuccess: "weather has been just updated")
-        } else {
-            self.state = .loaded(weatherModel)
-            weatherInfo = "weather is already saved, next available update: \(updateDateTime.formatted())"
-        }
-    }
-    
-    private func saveWeather(_ cityName: String, infoOnSuccess: String) async {
-        let result = await repo.fetchWeather(city: cityName)
+        let result = await repo.loadWeather(city: cityName)
         
         switch result {
         case .success (let weather):
-            let weather = repo.saveCDWeather(data: weather)
-            self.state = .loaded(WeatherModel.init(fromCoreData: weather))
-            weatherInfo = infoOnSuccess
+            self.state = .loaded(weather)
         case .failure (let error):
             self.state = .error(error.localizedDescription)
-            weatherInfo = ""
         }
     }
     
-    func deleteOldRecords() {
-        let weatherList = repo.loadAllCDWeather()
+    func fetchWeather(lat: Double, long: Double) async {
+        self.state = .loading
         
-        for weather in weatherList {
-            guard let savedDateTime = weather.dateTime else { continue }
-            let updateDateTime = Calendar.current.date(byAdding: .hour, value: 3, to: savedDateTime)!
-            if (updateDateTime < Date.now) {
-                guard let name = weather.name else { continue }
-                repo.deleteCDWeather(name: name)
-            }
+        let result = await repo.loadWeather(lat: lat, long: long)
+        
+        switch result {
+        case .success (let weather):
+            self.state = .loaded(weather)
+        case .failure (let error):
+            self.state = .error(error.localizedDescription)
         }
+    }
+    
+    
+    func deleteOldRecords() {
+        repo.deleteOldRecords()
     }
     
     var stateToString: String {

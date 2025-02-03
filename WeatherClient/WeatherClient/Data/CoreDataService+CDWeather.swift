@@ -15,7 +15,7 @@ extension CoreDataService {
     }
     
     func updateWeather(weather: Weather) -> CDWeather? {
-        guard let cdWeather = fetchWeather(name: weather.name) else { return nil }
+        guard let cdWeather = fetchWeather(coordinates: weather.coordinates) else { return nil }
         
         deleteRelatedWeatherDescriptions(cdWeather)
         
@@ -23,23 +23,38 @@ extension CoreDataService {
         return cdWeather
     }
     
-    func fetchWeather(name: String) -> CDWeather? {
-        let result = fetchDataFromEntity(CDWeather.self, fetchRequest: weatherFetchRequest(name))
+    func fetchWeather(city: String) -> CDWeather? {
+        let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", city)
+        let result = fetchDataFromEntity(CDWeather.self, fetchRequest: fetchRequest)
         return result.first
     }
     
-    func deleteWeather(name: String) {
-        let cdWeather = fetchWeather(name: name)
+    func fetchWeather(coordinates: String) -> CDWeather? {
+        let result = fetchDataFromEntity(
+            CDWeather.self,
+            fetchRequest: getCoordinatesFetchRequest(coordinates)
+        )
+        return result.first
+    }
+    
+    func deleteWeather(coordinates: String) {
+        let cdWeather = fetchWeather(coordinates: coordinates)
         guard let cdWeather = cdWeather else { return }
         
         deleteRelatedWeatherDescriptions(cdWeather)
         
-        deleteRecords(CDWeather.self, fetchRequest: weatherFetchRequest(name))
+        deleteRecords(CDWeather.self, fetchRequest: getCoordinatesFetchRequest(coordinates))
     }
     
     func fetchAllWeather() -> [CDWeather] {
         let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
         return fetchDataFromEntity(CDWeather.self, fetchRequest: fetchRequest)
+    }
+    
+    func fetchAllWeatherDesc() -> [CDWeatherDescription] {
+        let fetchRequest: NSFetchRequest<CDWeatherDescription> = CDWeatherDescription.fetchRequest()
+        return fetchDataFromEntity(CDWeatherDescription.self, fetchRequest: fetchRequest)
     }
 
     private func deleteRelatedWeatherDescriptions(_ cdWeather: CDWeather) {
@@ -51,9 +66,9 @@ extension CoreDataService {
         }
     }
     
-    private func weatherFetchRequest(_ name: String) -> NSFetchRequest<CDWeather>{
+    private func getCoordinatesFetchRequest(_ coordinates: String) -> NSFetchRequest<CDWeather>{
         let fetchRequest: NSFetchRequest<CDWeather> = CDWeather.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        fetchRequest.predicate = NSPredicate(format: "coordinates == %@", coordinates)
         return fetchRequest
     }
     
@@ -65,6 +80,7 @@ extension CoreDataService {
         cdWeather.pressure = weather.pressure
         cdWeather.temperature = weather.temperature
         cdWeather.wind = weather.windDesc
+        cdWeather.coordinates = weather.coordinates
         
         let weatherSet = NSMutableSet()
         

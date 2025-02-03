@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24C101" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="CDWeather" representedClassName=".CDWeather" syncable="YES">
+        <attribute name="coordinates" optional="YES" attributeType="String"/>
         <attribute name="dateTime" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="humidity" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
