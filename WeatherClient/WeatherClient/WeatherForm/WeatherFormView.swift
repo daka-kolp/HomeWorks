@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeatheerFormView: View {
+struct WeatherFormView: View {
     
     @StateObject private var weatherViewModel = WeatherFormViewModel()
     
@@ -17,23 +17,29 @@ struct WeatheerFormView: View {
     @State private var type = 0
     
     var body: some View {
-        VStack {
-            TextField("City", text: $cityName)
-            Spacer().frame(height: 16.0)
-            TextField("Lat", text: $latitude).keyboardType(.numbersAndPunctuation)
-            TextField("Long", text: $longitude).keyboardType(.numbersAndPunctuation)
-            Spacer().frame(height: 16.0)
-            Picker(selection: $type, label: Text("Request Type")) {
-                Text("City").tag(0)
-                Text("Coordinates").tag(1)
-            }.pickerStyle(SegmentedPickerStyle())
-            Spacer().frame(height: 32.0)
-            Button("Get Weather Data") { getWeather() }
-            Spacer().frame(height: 16.0)
-            Text(weatherViewModel.stateToString)
+        NavigationView {
+            VStack {
+                NavigationLink(destination:  WeatherForecastView()) {
+                    Text("Open Forecast")
+                }
+                Spacer().frame(height: 16.0)
+                TextField("City", text: $cityName)
+                Spacer().frame(height: 16.0)
+                TextField("Lat", text: $latitude).keyboardType(.numbersAndPunctuation)
+                TextField("Long", text: $longitude).keyboardType(.numbersAndPunctuation)
+                Spacer().frame(height: 16.0)
+                Picker(selection: $type, label: Text("Request Type")) {
+                    Text("City").tag(0)
+                    Text("Coordinates").tag(1)
+                }.pickerStyle(SegmentedPickerStyle())
+                Spacer().frame(height: 32.0)
+                Button("Get Weather Data") { getWeather() }
+                Spacer().frame(height: 16.0)
+                Text(weatherViewModel.stateToString)
+            }
+            .padding(16.0)
+            .onAppear() { deleteOldRecords() }
         }
-        .padding(16.0)
-        .onAppear() { deleteOldRecords() }
     }
     
     private func getWeather() {
