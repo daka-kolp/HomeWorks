@@ -39,7 +39,7 @@ struct WeatherForecastView: View {
 extension [Double] {
     var listOfPositiveValues: [Double] {
         let minValue = self.min() ?? 0.0
-        if(minValue < 0.0) {
+        if (minValue < 0.0) {
             return map { $0 + abs(minValue) }
         }
         return map { $0 }
