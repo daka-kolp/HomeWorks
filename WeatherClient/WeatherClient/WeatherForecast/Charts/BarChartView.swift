@@ -9,21 +9,17 @@ import SwiftUI
 
 struct BarChartView: View {
     let values: [Double]
-    
-    var data: [Double] {
-        return values
-    }
-    
+
     var body: some View {
         Canvas { context, rect in
-            guard !data.isEmpty else { return }
+            guard !values.isEmpty else { return }
             
-            let barWidth = rect.width / CGFloat(data.count)
+            let barWidth = rect.width / CGFloat(values.count)
             
-            let maxDataValue = data.max() ?? 1
+            let maxDataValue = values.max() ?? 1
             let scaleFactor = rect.height / (maxDataValue * 2)
             
-            for (index, value) in data.enumerated() {
+            for (index, value) in values.enumerated() {
                 let barHeight = abs(value) * scaleFactor
                 
                 let x = CGFloat(index) * barWidth

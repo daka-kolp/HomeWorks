@@ -27,7 +27,7 @@ struct PieChartView: View {
             
             var startAngle: CGFloat = -.pi / 2
             
-            for value in data {
+            for (index, value) in data.enumerated() {
                 let angle = (value / total) * 2 * .pi
                 let endAngle = startAngle + angle
                 
@@ -41,7 +41,8 @@ struct PieChartView: View {
                     clockwise: true
                 )
                 path.closeSubpath()
-                context.fill(path,  with: .color(.random))
+                
+                context.fill(path,  with: .color(values[index] > 0 ? .red : .blue))
                 
                 startAngle = endAngle
             }
