@@ -8,15 +8,18 @@
 import Foundation
 
 class WeatherForecastModel: Identifiable {
+    var date: Date
     var temperature: Double
     var pressure: Double
     var humidity: Double
     
     init(
-        temperature:  Double,
-        pressure:  Double,
-        humidity:  Double
+        date: Date,
+        temperature: Double,
+        pressure: Double,
+        humidity: Double
     ) {
+        self.date = date
         self.temperature = temperature
         self.pressure = pressure
         self.humidity = humidity
