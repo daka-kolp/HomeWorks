@@ -23,25 +23,14 @@ struct BarChartView: View {
                 let barHeight = abs(value) * scaleFactor
                 
                 let x = CGFloat(index) * barWidth
-                
-                if (value > 0.0) {
-                    let y = rect.height / 2.0 - barHeight
-                    let rect = CGRect(
-                        x: x,
-                        y: y,
-                        width: barWidth - 4.0,
-                        height: barHeight
-                    )
-                    context.fill(Path(rect), with: .color(.teal))
-                } else {
-                    let rect = CGRect(
-                        x: x,
-                        y: rect.height / 2.0,
-                        width: barWidth - 4.0,
-                        height: barHeight
-                    )
-                    context.fill(Path(rect), with: .color(.teal))
-                }
+                let y = value > 0.0 ? rect.height / 2.0 - barHeight : rect.height / 2.0
+                let rect = CGRect(
+                    x: x,
+                    y: y,
+                    width: barWidth - 4.0,
+                    height: barHeight
+                )
+                context.fill(Path(rect), with: .color(.teal))
             }
         }
         .frame(width: 300, height: 300)
