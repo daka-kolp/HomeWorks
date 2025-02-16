@@ -12,7 +12,6 @@ struct LottieTestView: View {
     private let lottie = LottieView(animation: .named("LottieAnimationTest"))
     
     var body: some View {
-        lottie.playing(loopMode: .loop)
-            .padding(16.0)
+        lottie.playing(loopMode: .loop).padding(16.0)
     }
 }
