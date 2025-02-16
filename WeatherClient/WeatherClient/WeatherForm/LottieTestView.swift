@@ -9,9 +9,10 @@ import SwiftUI
 import Lottie
 
 struct LottieTestView: View {
+    private let lottie = LottieView(animation: .named("LottieAnimationTest"))
     
     var body: some View {
-        LottieView(animation: .named("LottieAnimationTest")).playing()
-        .padding(16.0)
-    }    
+        lottie.playing(loopMode: .loop)
+            .padding(16.0)
+    }
 }
